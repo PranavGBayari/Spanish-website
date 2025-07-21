@@ -23,6 +23,8 @@ const Navbar = () => {
     { name: 'Practice', path: '/practice' },
     { name: 'Grammar', path: '/grammar' },
     { name: 'Tenses', path: '/tenses' },
+    { name: 'IGCSE', path: '/igcse' },
+    { name: 'IB', path: '/ib' },
     { name: 'About', path: '/about' }
   ];
 

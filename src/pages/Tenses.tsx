@@ -21,7 +21,9 @@ const Tenses = () => {
       description: 'Actions that happened in the past',
       tenses: [
         { id: 'preterite', name: 'Preterite', spanish: 'Pretérito', description: 'Completed past actions', level: 'Intermediate', color: 'bg-blue-500' },
-        { id: 'imperfect', name: 'Imperfect', spanish: 'Imperfecto', description: 'Ongoing past actions', level: 'Intermediate', color: 'bg-blue-500' }
+        { id: 'imperfect', name: 'Imperfect', spanish: 'Imperfecto', description: 'Ongoing past actions', level: 'Intermediate', color: 'bg-blue-500' },
+        { id: 'preterito-perfecto', name: 'Pretérito Perfecto', spanish: 'Pretérito Perfecto', description: 'Actions completed in a recent past period', level: 'Intermediate', color: 'bg-blue-500' },
+        { id: 'pluscuamperfecto', name: 'Pluscuamperfecto', spanish: 'Pluscuamperfecto', description: 'Actions completed before another past action', level: 'Advanced', color: 'bg-blue-600' }
       ]
     },
     {
@@ -30,6 +32,21 @@ const Tenses = () => {
       tenses: [
         { id: 'future-simple', name: 'Future Simple', spanish: 'Futuro Simple', description: 'Actions that will happen', level: 'Intermediate', color: 'bg-purple-500' },
         { id: 'conditional', name: 'Conditional', spanish: 'Condicional', description: 'Actions that would happen', level: 'Advanced', color: 'bg-red-500' }
+      ]
+    },
+    {
+      category: 'Subjunctive Tenses',
+      description: 'Express doubt, emotion, desire, or hypothetical situations',
+      tenses: [
+        { id: 'present-subjunctive', name: 'Present Subjunctive', spanish: 'Presente de Subjuntivo', description: 'Express doubt, emotion, or desire in present', level: 'Advanced', color: 'bg-orange-500' },
+        { id: 'imperfect-subjunctive', name: 'Imperfect Subjunctive', spanish: 'Imperfecto de Subjuntivo', description: 'Express doubt, emotion, or desire in past', level: 'Advanced', color: 'bg-orange-600' }
+      ]
+    },
+    {
+      category: 'Imperative Mood',
+      description: 'Commands and instructions',
+      tenses: [
+        { id: 'imperative', name: 'Imperative', spanish: 'Imperativo', description: 'Commands, orders, and instructions', level: 'Intermediate', color: 'bg-teal-500' }
       ]
     }
   ];

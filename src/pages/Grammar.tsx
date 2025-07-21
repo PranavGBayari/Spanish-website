@@ -6,29 +6,54 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { MapPin, ArrowRight } from 'lucide-react';
 import ProgressTracker from '@/components/ProgressTracker';
+import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/hooks/useAuth';
 
 const Grammar = () => {
   const [completedTopics, setCompletedTopics] = useState<string[]>([]);
+  const { user } = useAuth();
 
-  // Load completed topics from localStorage
+  // Load completed topics from database
   useEffect(() => {
-    const completed = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.startsWith('rating_')) {
-        completed.push(key.replace('rating_', ''));
+    const loadProgress = async () => {
+      if (!user) {
+        // Load from localStorage for non-authenticated users
+        const completed = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('rating_')) {
+            completed.push(key.replace('rating_', ''));
+          }
+        }
+        setCompletedTopics(completed);
+        return;
       }
-    }
-    setCompletedTopics(completed);
-  }, []);
+
+      // TODO: Implement database progress loading after migration is complete
+      // For now, fall back to localStorage
+      const completed = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('rating_')) {
+          completed.push(key.replace('rating_', ''));
+        }
+      }
+      setCompletedTopics(completed);
+    };
+
+    loadProgress();
+  }, [user]);
 
   const grammarTopics = {
     igcse: [
+      { id: 'days-of-week', name: 'Days of the Week', color: 'bg-blue-500', description: 'Lunes, martes, miércoles... - Learn the seven days in Spanish' },
+      { id: 'numbers-spanish', name: 'Numbers in Spanish', color: 'bg-blue-500', description: 'Uno, dos, tres... - Master Spanish numbers from 1 to 100 and beyond' },
+      { id: 'articles-spanish', name: 'Articles in Spanish', color: 'bg-blue-500', description: 'El, la, los, las, un, una... - Definite and indefinite articles' },
       { id: 'basic-pronouns', name: 'Basic Pronouns', color: 'bg-blue-500', description: 'Subject and object pronouns - Learn the fundamental building blocks of Spanish sentences' },
       { id: 'possessive-adjectives', name: 'Possessive Adjectives', color: 'bg-blue-500', description: 'Mi, tu, su, nuestro... - Express ownership and relationships in Spanish' },
       { id: 'present-simple', name: 'Present Simple', color: 'bg-blue-500', description: 'Regular and irregular verbs - Master the most essential Spanish tense' },
       { id: 'ser-estar', name: 'Ser vs Estar', color: 'bg-blue-500', description: 'To be verbs usage - Understand the crucial difference between permanent and temporary states' },
-      { id: 'place-prepositions', name: 'Prepositions of Place', color: 'bg-blue-500', description: 'Aquí, allí, debajo, encima... - Navigate locations and spatial relationships' },
+      { id: 'place-prepositions', name: 'Prepositions of Place', color: 'bg-green-500', description: 'Aquí, allí, debajo, encima... - Navigate locations and spatial relationships' },
       { id: 'present-continuous', name: 'Present Continuous', color: 'bg-green-500', description: 'Estar + gerund - Express ongoing actions happening right now' },
       { id: 'basic-connectors', name: 'Basic Connectors', color: 'bg-green-500', description: 'Y, pero, porque, cuando... - Connect your ideas and create flowing sentences' },
       { id: 'preterite-tense', name: 'Preterite Tense', color: 'bg-green-500', description: 'Past simple actions - Talk about completed events in the past' },
@@ -39,7 +64,6 @@ const Grammar = () => {
       { id: 'subjunctive-present', name: 'Present Subjunctive', color: 'bg-red-500', description: 'Expressing doubt, emotion - Navigate the complex world of subjunctive mood' },
       { id: 'complex-connectors', name: 'Complex Connectors', color: 'bg-red-500', description: 'Sin embargo, por tanto, a pesar de... - Create sophisticated, academic-level writing' },
       { id: 'conditional', name: 'Conditional Tense', color: 'bg-red-500', description: 'Would, could, should - Express hypothetical situations and polite requests' },
-      { id: 'future-perfect', name: 'Future Perfect', color: 'bg-purple-500', description: 'Will have done - Discuss future completed actions with precision' },
       { id: 'subjunctive-imperfect', name: 'Imperfect Subjunctive', color: 'bg-purple-500', description: 'Advanced subjunctive forms - Handle complex hypothetical and formal situations' },
       { id: 'passive-voice', name: 'Passive Voice', color: 'bg-purple-500', description: 'Ser + past participle - Express actions without specifying the doer' },
     ]
@@ -61,7 +85,7 @@ const Grammar = () => {
         {/* Station info */}
         <div className="ml-6 flex-1">
           <Link 
-            to={topic.id === 'present-simple' || topic.id === 'present-continuous' || topic.id === 'preterite-tense' || topic.id === 'imperfect-tense' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
+            to={topic.id === 'present-simple' || topic.id === 'present-continuous' || topic.id === 'preterite-tense' || topic.id === 'imperfect-tense' || topic.id === 'subjunctive-present' || topic.id === 'subjunctive-imperfect' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
             className="group block"
           >
             <Card className="hover:shadow-lg transition-all duration-200 group-hover:border-primary min-h-[140px] h-full">
