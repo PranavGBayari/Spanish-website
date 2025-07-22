@@ -12,24 +12,6 @@ const TenseDetail = () => {
 
   // Placeholder data - will be expanded later
   const tenseData = {
-    'present-simple': {
-      name: 'Present Simple',
-      spanish: 'Presente Simple',
-      level: 'Basic',
-      description: 'Used for habitual actions, general truths, and permanent situations',
-      formation: 'Subject + verb (infinitive without "to")',
-      examples: ['Yo hablo español (I speak Spanish)', 'Ella come frutas (She eats fruits)', 'Nosotros vivimos aquí (We live here)'],
-      usage: 'Use for routine actions, facts, and permanent states'
-    },
-    'present-continuous': {
-      name: 'Present Continuous',
-      spanish: 'Presente Continuo',
-      level: 'Basic', 
-      description: 'Used for actions happening right now or temporary situations',
-      formation: 'Estar + gerund (-ando/-iendo)',
-      examples: ['Yo estoy hablando (I am speaking)', 'Ella está comiendo (She is eating)', 'Nosotros estamos viviendo (We are living)'],
-      usage: 'Use for actions happening now or temporary situations'
-    },
     'preterite-tense': {
       name: 'Preterite Tense',
       spanish: 'Pretérito Indefinido',

@@ -48,12 +48,19 @@ const About = () => {
             <CardTitle className="text-3xl mb-4">Our Mission</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-lg text-gray-700 leading-relaxed text-center">
-              We believe that learning Spanish should be accessible, engaging, and effective. 
-              Our platform combines traditional learning methods with modern technology to create 
-              an immersive experience that helps students master Spanish grammar, vocabulary, 
-              and practical usage.
-            </p>
+            <p>If you're here, you're probably either trying to figure out what subjunctive even means or panicking over how to write 150 words in Spanish without sounding like Google Translate’s distant cousin. Trust us, we’ve been there.</p><br />
+              <p>This website was created by two students who totally get the struggle:</p><br />
+              <p><b>Me (95th percentile in IGCSE Spanish)</b>: Yep, I started learning Spanish at the beginning of IGCSE, and it felt like diving headfirst into the deep end of la piscina. If I could go from Hola, ¿cómo estás? to acing my exams, so can you.</p>
+              <p><b>My Partner-in-Crime (IB Spanish Ab Initio)</b>: He’s tackling Spanish from scratch in the IB world, which means he knows exactly how to survive (and thrive) when your vocab starts and ends with "enchilada."</p><br />
+              <p>Between us, we’ve got the perspectives of both IGCSE and IB (B and Ab Initio), so we know what you’re going through. And we’re here to make it easier, more fun, and (hopefully) less stressful.</p><br />
+              <p>Here, you’ll find:</p><br />
+              <ul>
+                  <li>Grammar explained without the boring textbook vibe</li>
+                  <li>Writing tips that’ll have your teacher wondering who you hired</li>
+                  <li>Speaking tricks to sound like you actually know what you’re saying</li>
+                  <li>Resources for mastering those papers, whether you’re aiming for a 7 in IB or just trying to pass IGCSE without crying.</li>
+              </ul><br />
+              <p>So buckle up, grab your hucha (Word of the Day, see what we did there?), and let’s make Spanish less of a mystery and more of a win! ¡Vamos!</p>
           </CardContent>
         </Card>
 

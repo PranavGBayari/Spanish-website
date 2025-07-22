@@ -12,15 +12,15 @@ const Tenses = () => {
       category: 'Present Tenses',
       description: 'Actions happening now or regularly',
       tenses: [
-        { id: 'present-simple', name: 'Present Simple', spanish: 'Presente Simple', description: 'Habitual actions and general truths', level: 'Basic', color: 'bg-green-500' },
-        { id: 'present-continuous', name: 'Present Continuous', spanish: 'Presente Continuo', description: 'Actions happening right now', level: 'Basic', color: 'bg-green-500' }
+        { id: 'present', name: 'Present Simple', spanish: 'Presente Simple', description: 'Habitual actions and general truths', level: 'Basic', color: 'bg-green-500' },
+        { id: 'present-continuous', name: 'Present Continuous', spanish: ' Gerundio', description: 'Actions happening right now', level: 'Basic', color: 'bg-green-500' },      
       ]
     },
     {
       category: 'Past Tenses',
       description: 'Actions that happened in the past',
       tenses: [
-        { id: 'preterite', name: 'Preterite', spanish: 'Pretérito', description: 'Completed past actions', level: 'Intermediate', color: 'bg-blue-500' },
+        { id: 'Indefenido', name: 'Past tense', spanish: 'Pretérito indefenido', description: 'Completed past actions', level: 'Intermediate', color: 'bg-blue-500' },
         { id: 'imperfect', name: 'Imperfect', spanish: 'Imperfecto', description: 'Ongoing past actions', level: 'Intermediate', color: 'bg-blue-500' },
         { id: 'preterito-perfecto', name: 'Pretérito Perfecto', spanish: 'Pretérito Perfecto', description: 'Actions completed in a recent past period', level: 'Intermediate', color: 'bg-blue-500' },
         { id: 'pluscuamperfecto', name: 'Pluscuamperfecto', spanish: 'Pluscuamperfecto', description: 'Actions completed before another past action', level: 'Advanced', color: 'bg-blue-600' }

@@ -51,12 +51,12 @@ const Grammar = () => {
       { id: 'articles-spanish', name: 'Articles in Spanish', color: 'bg-blue-500', description: 'El, la, los, las, un, una... - Definite and indefinite articles' },
       { id: 'basic-pronouns', name: 'Basic Pronouns', color: 'bg-blue-500', description: 'Subject and object pronouns - Learn the fundamental building blocks of Spanish sentences' },
       { id: 'possessive-adjectives', name: 'Possessive Adjectives', color: 'bg-blue-500', description: 'Mi, tu, su, nuestro... - Express ownership and relationships in Spanish' },
-      { id: 'present-simple', name: 'Present Simple', color: 'bg-blue-500', description: 'Regular and irregular verbs - Master the most essential Spanish tense' },
+      { id: 'present', name: 'Present Simple', color: 'bg-blue-500', description: 'Regular and irregular verbs - Master the most essential Spanish tense' },
       { id: 'ser-estar', name: 'Ser vs Estar', color: 'bg-blue-500', description: 'To be verbs usage - Understand the crucial difference between permanent and temporary states' },
       { id: 'place-prepositions', name: 'Prepositions of Place', color: 'bg-green-500', description: 'Aquí, allí, debajo, encima... - Navigate locations and spatial relationships' },
       { id: 'present-continuous', name: 'Present Continuous', color: 'bg-green-500', description: 'Estar + gerund - Express ongoing actions happening right now' },
       { id: 'basic-connectors', name: 'Basic Connectors', color: 'bg-green-500', description: 'Y, pero, porque, cuando... - Connect your ideas and create flowing sentences' },
-      { id: 'preterite-tense', name: 'Preterite Tense', color: 'bg-green-500', description: 'Past simple actions - Talk about completed events in the past' },
+      { id: 'indefenido', name: 'PastTense', color: 'bg-green-500', description: 'Past simple actions - Talk about completed events in the past' },
       { id: 'imperfect-tense', name: 'Imperfect Tense', color: 'bg-green-500', description: 'Ongoing past actions - Describe habits, descriptions, and background events' },
     ],
     ib: [
@@ -85,7 +85,7 @@ const Grammar = () => {
         {/* Station info */}
         <div className="ml-6 flex-1">
           <Link 
-            to={topic.id === 'present-simple' || topic.id === 'present-continuous' || topic.id === 'preterite-tense' || topic.id === 'imperfect-tense' || topic.id === 'subjunctive-present' || topic.id === 'subjunctive-imperfect' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
+            to={topic.id === 'present' || topic.id === 'present-continuous' || topic.id === 'indefenido' || topic.id === 'imperfect-tense' || topic.id === 'subjunctive-present' || topic.id === 'subjunctive-imperfect' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
             className="group block"
           >
             <Card className="hover:shadow-lg transition-all duration-200 group-hover:border-primary min-h-[140px] h-full">

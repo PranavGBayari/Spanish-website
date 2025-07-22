@@ -20,9 +20,11 @@ import Pluscuamperfecto from "./pages/tenses/Pluscuamperfecto";
 import PresentSubjunctive from "./pages/tenses/PresentSubjunctive";
 import ImperfectSubjunctive from "./pages/tenses/ImperfectSubjunctive";
 import Imperative from "./pages/tenses/Imperative";
-
+import Present from "./pages/tenses/Present";
+import PresentContinuous from "./pages/tenses/PresentContinuous";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+import Indefenido from "./pages/tenses/Indefenido";
 
 const queryClient = new QueryClient();
 
@@ -44,7 +46,10 @@ const App = () => (
             <Route path="/tense/pluscuamperfecto" element={<Pluscuamperfecto />} />
             <Route path="/tense/present-subjunctive" element={<PresentSubjunctive />} />
             <Route path="/tense/imperfect-subjunctive" element={<ImperfectSubjunctive />} />
+            <Route path="/tense/present-continuous" element={<PresentContinuous />} />
             <Route path="/tense/imperative" element={<Imperative />} />
+            <Route path="/tense/indefenido" element={<Indefenido />} />
+            <Route path="/tense/present" element={<Present />} />
             <Route path="/practice" element={<FillInTheBlanks />} />
             <Route path="/word-of-the-day" element={<WordOfTheDay />} />
             <Route path="/about" element={<About />} />
