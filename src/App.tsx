@@ -25,6 +25,8 @@ import PresentContinuous from "./pages/tenses/PresentContinuous";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 import Indefenido from "./pages/tenses/Indefenido";
+import ImperfectPreterito from "./pages/tenses/ImperfectPreterito";
+import Perfecto from "./pages/tenses/Perfecto";
 
 const queryClient = new QueryClient();
 
@@ -49,14 +51,14 @@ const App = () => (
             <Route path="/tense/present-continuous" element={<PresentContinuous />} />
             <Route path="/tense/imperative" element={<Imperative />} />
             <Route path="/tense/indefenido" element={<Indefenido />} />
+            <Route path="/tense/imperfect-preterito" element={<ImperfectPreterito />} />
             <Route path="/tense/present" element={<Present />} />
+            <Route path="/tense/perfecto" element={<Perfecto />} />
             <Route path="/practice" element={<FillInTheBlanks />} />
             <Route path="/word-of-the-day" element={<WordOfTheDay />} />
             <Route path="/about" element={<About />} />
             <Route path="/igcse" element={<IGCSE />} />
             <Route path="/ib" element={<IB />} />
-            
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

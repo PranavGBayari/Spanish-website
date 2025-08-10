@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Star, Send, CheckCircle } from 'lucide-react';
+import { useProfileProgress } from '@/hooks/useProfileProgress';
 
 interface RatingFeedbackProps {
   topicId: string;
@@ -16,12 +17,16 @@ const RatingFeedback = ({ topicId, topicTitle, onSubmit }: RatingFeedbackProps) 
   const [feedback, setFeedback] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [hoveredStar, setHoveredStar] = useState(0);
+  const { increment, hasUser } = useProfileProgress();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (rating > 0) {
       onSubmit(rating, feedback);
+      if (hasUser) {
+        await increment();
+      }
       setSubmitted(true);
-      // Store in localStorage for persistence
+      // Store in localStorage for persistence (rating only)
       localStorage.setItem(`rating_${topicId}`, JSON.stringify({
         rating,
         feedback,

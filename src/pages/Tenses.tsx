@@ -21,8 +21,8 @@ const Tenses = () => {
       description: 'Actions that happened in the past',
       tenses: [
         { id: 'Indefenido', name: 'Past tense', spanish: 'Pretérito indefenido', description: 'Completed past actions', level: 'Intermediate', color: 'bg-blue-500' },
-        { id: 'imperfect', name: 'Imperfect', spanish: 'Imperfecto', description: 'Ongoing past actions', level: 'Intermediate', color: 'bg-blue-500' },
-        { id: 'preterito-perfecto', name: 'Pretérito Perfecto', spanish: 'Pretérito Perfecto', description: 'Actions completed in a recent past period', level: 'Intermediate', color: 'bg-blue-500' },
+        { id: 'imperfect-preterito', name: 'Imperfect', spanish: 'Imperfecto', description: 'Ongoing past actions', level: 'Intermediate', color: 'bg-blue-500' },
+        { id: 'perfecto', name: 'Pretérito Perfecto', spanish: 'Pretérito Perfecto', description: 'Actions completed in a recent past period', level: 'Intermediate', color: 'bg-blue-500' },
         { id: 'pluscuamperfecto', name: 'Pluscuamperfecto', spanish: 'Pluscuamperfecto', description: 'Actions completed before another past action', level: 'Advanced', color: 'bg-blue-600' }
       ]
     },

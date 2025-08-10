@@ -12,24 +12,7 @@ const TenseDetail = () => {
 
   // Placeholder data - will be expanded later
   const tenseData = {
-    'preterite-tense': {
-      name: 'Preterite Tense',
-      spanish: 'Pretérito Indefinido',
-      level: 'Intermediate',
-      description: 'Used for completed actions in the past with specific time references',
-      formation: 'Verb + preterite endings (-é, -aste, -ó, -amos, -asteis, -aron)',
-      examples: ['Yo hablé con María ayer (I spoke with María yesterday)', 'Él comió la pizza (He ate the pizza)', 'Nosotros fuimos al cine (We went to the cinema)'],
-      usage: 'Use for completed past actions with specific time markers'
-    },
-    'imperfect-tense': {
-      name: 'Imperfect Tense',
-      spanish: 'Pretérito Imperfecto',
-      level: 'Intermediate',
-      description: 'Used for ongoing past actions, descriptions, and habitual actions',
-      formation: 'Verb + imperfect endings (-aba, -abas, -aba, -ábamos, -abais, -aban)',
-      examples: ['Yo hablaba español cuando era niño (I used to speak Spanish when I was a child)', 'Ella comía frutas todos los días (She used to eat fruits every day)', 'Nosotros vivíamos en Madrid (We used to live in Madrid)'],
-      usage: 'Use for past descriptions, habitual actions, and ongoing past situations'
-    }
+    
   };
 
   const tense = tenseData[tenseSlug];

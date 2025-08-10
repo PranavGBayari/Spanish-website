@@ -18,23 +18,65 @@ export type Database = {
         Row: {
           avatar_url: string | null
           created_at: string | null
+          display_name: string | null
           full_name: string | null
           id: string
+          pages_completed: number
           updated_at: string | null
         }
         Insert: {
           avatar_url?: string | null
           created_at?: string | null
+          display_name?: string | null
           full_name?: string | null
           id: string
+          pages_completed?: number
           updated_at?: string | null
         }
         Update: {
           avatar_url?: string | null
           created_at?: string | null
+          display_name?: string | null
           full_name?: string | null
           id?: string
+          pages_completed?: number
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      user_progress: {
+        Row: {
+          completed: boolean
+          completed_at: string | null
+          created_at: string
+          id: string
+          rating: number | null
+          topic_id: string
+          topic_type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed?: boolean
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          rating?: number | null
+          topic_id: string
+          topic_type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed?: boolean
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          rating?: number | null
+          topic_id?: string
+          topic_type?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -43,7 +85,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_pages_completed: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

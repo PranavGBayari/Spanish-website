@@ -57,7 +57,8 @@ const Grammar = () => {
       { id: 'present-continuous', name: 'Present Continuous', color: 'bg-green-500', description: 'Estar + gerund - Express ongoing actions happening right now' },
       { id: 'basic-connectors', name: 'Basic Connectors', color: 'bg-green-500', description: 'Y, pero, porque, cuando... - Connect your ideas and create flowing sentences' },
       { id: 'indefenido', name: 'PastTense', color: 'bg-green-500', description: 'Past simple actions - Talk about completed events in the past' },
-      { id: 'imperfect-tense', name: 'Imperfect Tense', color: 'bg-green-500', description: 'Ongoing past actions - Describe habits, descriptions, and background events' },
+      { id: 'imperfect-preterito', name: 'Imperfect Tense', color: 'bg-green-500', description: 'Ongoing past actions - Describe habits, descriptions, and background events' },
+      { id: 'perefecto', name: 'Pretérito Perfecto', color: 'bg-green-500', description: 'Recent past actions - Discuss events that have relevance to the present' },
     ],
     ib: [
       { id: 'advanced-pronouns', name: 'Advanced Pronouns', color: 'bg-red-500', description: 'Direct/indirect object pronouns - Master complex pronoun placement and usage' },
@@ -85,7 +86,7 @@ const Grammar = () => {
         {/* Station info */}
         <div className="ml-6 flex-1">
           <Link 
-            to={topic.id === 'present' || topic.id === 'present-continuous' || topic.id === 'indefenido' || topic.id === 'imperfect-tense' || topic.id === 'subjunctive-present' || topic.id === 'subjunctive-imperfect' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
+            to={topic.id === 'present' || topic.id === 'present-continuous' || topic.id === 'indefenido' || topic.id === 'imperfect-preterito' || topic.id === 'perfecto' || topic.id === 'subjunctive-present' || topic.id === 'subjunctive-imperfect' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
             className="group block"
           >
             <Card className="hover:shadow-lg transition-all duration-200 group-hover:border-primary min-h-[140px] h-full">
