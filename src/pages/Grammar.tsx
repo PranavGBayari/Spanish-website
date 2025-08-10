@@ -58,10 +58,12 @@ const Grammar = () => {
       { id: 'basic-connectors', name: 'Basic Connectors', color: 'bg-green-500', description: 'Y, pero, porque, cuando... - Connect your ideas and create flowing sentences' },
       { id: 'indefenido', name: 'PastTense', color: 'bg-green-500', description: 'Past simple actions - Talk about completed events in the past' },
       { id: 'imperfect-preterito', name: 'Imperfect Tense', color: 'bg-green-500', description: 'Ongoing past actions - Describe habits, descriptions, and background events' },
+      { id: 'future', name: 'Future Tense', color: 'bg-green-500', description: 'Talk about future plans and intentions' },
       { id: 'perefecto', name: 'Pretérito Perfecto', color: 'bg-green-500', description: 'Recent past actions - Discuss events that have relevance to the present' },
     ],
     ib: [
       { id: 'advanced-pronouns', name: 'Advanced Pronouns', color: 'bg-red-500', description: 'Direct/indirect object pronouns - Master complex pronoun placement and usage' },
+      { id: 'conditional', name: 'Conditional Tense', color: 'bg-red-500', description: 'Would, could, should - Express hypothetical situations and polite requests' },
       { id: 'subjunctive-present', name: 'Present Subjunctive', color: 'bg-red-500', description: 'Expressing doubt, emotion - Navigate the complex world of subjunctive mood' },
       { id: 'complex-connectors', name: 'Complex Connectors', color: 'bg-red-500', description: 'Sin embargo, por tanto, a pesar de... - Create sophisticated, academic-level writing' },
       { id: 'conditional', name: 'Conditional Tense', color: 'bg-red-500', description: 'Would, could, should - Express hypothetical situations and polite requests' },
@@ -86,7 +88,7 @@ const Grammar = () => {
         {/* Station info */}
         <div className="ml-6 flex-1">
           <Link 
-            to={topic.id === 'present' || topic.id === 'present-continuous' || topic.id === 'indefenido' || topic.id === 'imperfect-preterito' || topic.id === 'perfecto' || topic.id === 'subjunctive-present' || topic.id === 'subjunctive-imperfect' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
+            to={topic.id === 'present' || topic.id === 'present-continuous' || topic.id === 'indefenido' || topic.id === 'imperfect-preterito' || topic.id === 'perfecto' || topic.id === 'future' || topic.id === 'conditional' || topic.id === 'subjunctive-present' || topic.id === 'subjunctive-imperfect' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
             className="group block"
           >
             <Card className="hover:shadow-lg transition-all duration-200 group-hover:border-primary min-h-[140px] h-full">

@@ -15,6 +15,8 @@ import WordOfTheDay from "./pages/WordOfTheDay";
 import About from "./pages/About";
 import IGCSE from "./pages/IGCSE";
 import IB from "./pages/IB";
+
+/* tenses */
 import PreteritoPerfecto from "./pages/tenses/PreteritoPerfecto";
 import Pluscuamperfecto from "./pages/tenses/Pluscuamperfecto";
 import PresentSubjunctive from "./pages/tenses/PresentSubjunctive";
@@ -22,11 +24,15 @@ import ImperfectSubjunctive from "./pages/tenses/ImperfectSubjunctive";
 import Imperative from "./pages/tenses/Imperative";
 import Present from "./pages/tenses/Present";
 import PresentContinuous from "./pages/tenses/PresentContinuous";
-import Auth from "./pages/Auth";
-import NotFound from "./pages/NotFound";
 import Indefenido from "./pages/tenses/Indefenido";
 import ImperfectPreterito from "./pages/tenses/ImperfectPreterito";
 import Perfecto from "./pages/tenses/Perfecto";
+import Future from "./pages/tenses/Future";
+import Conditional from "./pages/tenses/Conditional";
+
+import Auth from "./pages/Auth";
+import NotFound from "./pages/NotFound";
+
 
 const queryClient = new QueryClient();
 
@@ -54,6 +60,8 @@ const App = () => (
             <Route path="/tense/imperfect-preterito" element={<ImperfectPreterito />} />
             <Route path="/tense/present" element={<Present />} />
             <Route path="/tense/perfecto" element={<Perfecto />} />
+            <Route path="/tense/future" element={<Future />} />
+            <Route path="/tense/conditional" element={<Conditional />} />
             <Route path="/practice" element={<FillInTheBlanks />} />
             <Route path="/word-of-the-day" element={<WordOfTheDay />} />
             <Route path="/about" element={<About />} />

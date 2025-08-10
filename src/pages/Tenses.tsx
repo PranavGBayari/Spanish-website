@@ -30,7 +30,7 @@ const Tenses = () => {
       category: 'Future Tenses',
       description: 'Actions that will happen',
       tenses: [
-        { id: 'future-simple', name: 'Future Simple', spanish: 'Futuro Simple', description: 'Actions that will happen', level: 'Intermediate', color: 'bg-purple-500' },
+        { id: 'future', name: 'Future Simple', spanish: 'Futuro Simple', description: 'Actions that will happen', level: 'Intermediate', color: 'bg-purple-500' },
         { id: 'conditional', name: 'Conditional', spanish: 'Condicional', description: 'Actions that would happen', level: 'Advanced', color: 'bg-red-500' }
       ]
     },
