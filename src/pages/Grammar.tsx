@@ -87,7 +87,7 @@ const Grammar = () => {
         {/* Station info */}
         <div className="ml-6 flex-1">
           <Link 
-            to={topic.id === 'present' || topic.id === 'present-continuous' || topic.id === 'indefenido' || topic.id === 'imperfect-preterito' || topic.id === 'perfecto' || topic.id === 'future' || topic.id === 'conditional' || topic.id === 'subjunctive-present' || topic.id === 'subjunctive-imperfect' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
+            to={topic.id === 'present' || topic.id === 'present-continuous' || topic.id === 'indefenido' || topic.id === 'imperfect-preterito' || topic.id === 'perfecto' || topic.id === 'future' || topic.id === 'conditional' || topic.id === 'present-subjunctive' || topic.id === 'imperfect-subjunctive' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
             className="group block"
           >
             <Card className="hover:shadow-lg transition-all duration-200 group-hover:border-primary min-h-[140px] h-full">
