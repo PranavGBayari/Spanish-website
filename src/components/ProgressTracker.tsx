@@ -1,27 +1,44 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Circle, Trophy, Target } from 'lucide-react';
+import { CheckCircle, Circle, Trophy, Target, Star } from 'lucide-react';
+import { useUserProgress } from '@/hooks/useUserProgress';
 
-interface TopicProgress {
+interface Topic {
   id: string;
   name: string;
-  completed: boolean;
-  rating?: number;
+  type: string; // 'grammar', 'tense', etc.
 }
 
 interface ProgressTrackerProps {
-  igcseTopics: TopicProgress[];
-  ibTopics: TopicProgress[];
+  igcseTopics: Topic[];
+  ibTopics: Topic[];
 }
 
 const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
-  const igcseCompleted = igcseTopics.filter(t => t.completed).length;
-  const ibCompleted = ibTopics.filter(t => t.completed).length;
+  const { summary, isTopicCompleted, loading, hasUser } = useUserProgress();
+
+  if (!hasUser) {
+    return null; // Don't show progress tracker for non-authenticated users
+  }
+
+  if (loading) {
+    return (
+      <Card className="mb-8 bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200">
+        <CardContent className="p-8 text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
+          <p className="mt-2 text-gray-600">Loading your progress...</p>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  const allTopics = [...igcseTopics, ...ibTopics];
+  const igcseCompleted = igcseTopics.filter(t => isTopicCompleted(t.id, t.type)).length;
+  const ibCompleted = ibTopics.filter(t => isTopicCompleted(t.id, t.type)).length;
   const totalCompleted = igcseCompleted + ibCompleted;
-  const totalTopics = igcseTopics.length + ibTopics.length;
-  const progressPercentage = Math.round((totalCompleted / totalTopics) * 100);
+  const totalTopics = allTopics.length;
+  const progressPercentage = totalTopics > 0 ? Math.round((totalCompleted / totalTopics) * 100) : 0;
 
   return (
     <Card className="mb-8 bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200">
@@ -41,7 +58,15 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-gray-600">Overall Progress</span>
-            <span className="text-sm font-medium">{totalCompleted}/{totalTopics} topics</span>
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-medium">{totalCompleted}/{totalTopics} topics</span>
+              {summary?.average_rating && (
+                <div className="flex items-center gap-1 text-sm text-yellow-600">
+                  <Star className="w-4 h-4 fill-yellow-400" />
+                  <span>{summary.average_rating}/5</span>
+                </div>
+              )}
+            </div>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-3">
             <div 
@@ -71,6 +96,30 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
             <p className="text-sm text-gray-600">Standard & Higher Level</p>
           </div>
         </div>
+
+        {/* Recent Completions */}
+        {summary && (summary.grammar_completed > 0 || summary.tense_completed > 0) && (
+          <div className="mt-4 p-3 bg-white/70 rounded-lg">
+            <h4 className="font-medium text-gray-700 mb-2">Your Achievements</h4>
+            <div className="flex flex-wrap gap-2">
+              {summary.grammar_completed > 0 && (
+                <Badge variant="secondary" className="text-xs">
+                  {summary.grammar_completed} Grammar Topics
+                </Badge>
+              )}
+              {summary.tense_completed > 0 && (
+                <Badge variant="secondary" className="text-xs">
+                  {summary.tense_completed} Tenses Mastered
+                </Badge>
+              )}
+              {summary.average_rating && summary.average_rating >= 4 && (
+                <Badge variant="secondary" className="text-xs bg-yellow-100 text-yellow-800">
+                  High Performer ⭐
+                </Badge>
+              )}
+            </div>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

@@ -282,7 +282,10 @@ const Conditional = () => {
           <RatingFeedback 
             topicId="conditional"
             topicTitle="Conditional Tense"
-            onSubmit={handleRating}
+            topicType = "tense"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>
