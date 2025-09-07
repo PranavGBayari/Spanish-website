@@ -18,9 +18,6 @@ interface ProgressTrackerProps {
 const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
   const { summary, isTopicCompleted, loading, hasUser } = useUserProgress();
 
-  if (!hasUser) {
-    return null; // Don't show progress tracker for non-authenticated users
-  }
 
   if (loading) {
     return (
@@ -34,11 +31,25 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
   }
 
   const allTopics = [...igcseTopics, ...ibTopics];
-  const igcseCompleted = igcseTopics.filter(t => isTopicCompleted(t.id, t.type)).length;
-  const ibCompleted = ibTopics.filter(t => isTopicCompleted(t.id, t.type)).length;
-  const totalCompleted = igcseCompleted + ibCompleted;
-  const totalTopics = allTopics.length;
-  const progressPercentage = totalTopics > 0 ? Math.round((totalCompleted / totalTopics) * 100) : 0;
+  let igcseCompleted = 0;
+  let ibCompleted = 0;
+  let totalCompleted = 0;
+  let progressPercentage = 0;
+  let totalTopics = allTopics.length;
+
+  if (hasUser) {
+    // Calculate completed topics live
+    igcseCompleted = igcseTopics.filter(t => isTopicCompleted(t.id, t.type)).length;
+    ibCompleted = ibTopics.filter(t => isTopicCompleted(t.id, t.type)).length;
+    totalCompleted = igcseCompleted + ibCompleted;
+    progressPercentage = totalTopics > 0 ? Math.round((totalCompleted / totalTopics) * 100) : 0;
+  } else {
+    // For guests, show zero progress
+    igcseCompleted = 0;
+    ibCompleted = 0;
+    totalCompleted = 0;
+    progressPercentage = 0;
+  }
 
   return (
     <Card className="mb-8 bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200">
@@ -49,7 +60,7 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
             Your Progress
           </CardTitle>
           <Badge variant="outline" className="text-lg px-3 py-1">
-            {progressPercentage}% Complete
+            {hasUser ? `${progressPercentage}% Complete` : 'Sign in to track'}
           </Badge>
         </div>
       </CardHeader>
@@ -59,8 +70,8 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-gray-600">Overall Progress</span>
             <div className="flex items-center gap-4">
-              <span className="text-sm font-medium">{totalCompleted}/{totalTopics} topics</span>
-              {summary?.average_rating && (
+              <span className="text-sm font-medium">{hasUser ? `${totalCompleted}/${totalTopics} topics` : `0/${totalTopics} topics`}</span>
+              {hasUser && summary?.average_rating && (
                 <div className="flex items-center gap-1 text-sm text-yellow-600">
                   <Star className="w-4 h-4 fill-yellow-400" />
                   <span>{summary.average_rating}/5</span>
@@ -70,8 +81,8 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
           </div>
           <div className="w-full bg-gray-200 rounded-full h-3">
             <div 
-              className="bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full transition-all duration-500"
-              style={{ width: `${progressPercentage}%` }}
+              className={`h-3 rounded-full transition-all duration-500 ${hasUser ? 'bg-gradient-to-r from-green-500 to-blue-500' : 'bg-gray-400'}`}
+              style={{ width: hasUser ? `${progressPercentage}%` : '0%' }}
             ></div>
           </div>
         </div>
@@ -83,7 +94,7 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
               <h3 className="font-semibold text-blue-700">IGCSE Level</h3>
               <Target className="w-4 h-4 text-blue-500" />
             </div>
-            <p className="text-2xl font-bold text-blue-800">{igcseCompleted}/{igcseTopics.length}</p>
+            <p className="text-2xl font-bold text-blue-800">{hasUser ? igcseCompleted : 0}/{igcseTopics.length}</p>
             <p className="text-sm text-gray-600">Foundation & Intermediate</p>
           </div>
           
@@ -92,13 +103,13 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
               <h3 className="font-semibold text-red-700">IB Level</h3>
               <Trophy className="w-4 h-4 text-red-500" />
             </div>
-            <p className="text-2xl font-bold text-red-800">{ibCompleted}/{ibTopics.length}</p>
+            <p className="text-2xl font-bold text-red-800">{hasUser ? ibCompleted : 0}/{ibTopics.length}</p>
             <p className="text-sm text-gray-600">Standard & Higher Level</p>
           </div>
         </div>
 
         {/* Recent Completions */}
-        {summary && (summary.grammar_completed > 0 || summary.tense_completed > 0) && (
+        {hasUser && summary && (summary.grammar_completed > 0 || summary.tense_completed > 0) && (
           <div className="mt-4 p-3 bg-white/70 rounded-lg">
             <h4 className="font-medium text-gray-700 mb-2">Your Achievements</h4>
             <div className="flex flex-wrap gap-2">
@@ -118,6 +129,13 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
                 </Badge>
               )}
             </div>
+          </div>
+        )}
+
+        {/* Placeholder for guests */}
+        {!hasUser && (
+          <div className="mt-4 p-3 bg-white/70 rounded-lg text-center">
+            <h4 className="font-medium text-gray-700 mb-2">Sign in to track your progress and achievements!</h4>
           </div>
         )}
       </CardContent>
