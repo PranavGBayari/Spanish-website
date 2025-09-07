@@ -330,7 +330,10 @@ const Future = () => {
           <RatingFeedback 
             topicId="future"
             topicTitle="Future Tense"
-            onSubmit={handleRating}
+            topicType="tense"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>

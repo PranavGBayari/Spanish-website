@@ -287,7 +287,10 @@ const PresentContinuous = () => {
           <RatingFeedback 
             topicId="present-continuous"
             topicTitle="Present Continuous Tense"
-            onSubmit={handleRating}
+            topicType="tense"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>

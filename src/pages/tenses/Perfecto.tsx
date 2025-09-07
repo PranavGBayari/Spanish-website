@@ -312,7 +312,10 @@ const Perfecto = () => {
           <RatingFeedback 
             topicId="perfecto"
             topicTitle="Perfect Tense"
-            onSubmit={handleRating}
+            topicType="tense"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>

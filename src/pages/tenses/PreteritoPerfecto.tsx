@@ -235,7 +235,10 @@ const PreteritoPerfecto = () => {
           <RatingFeedback 
             topicId="preterito-perfecto"
             topicTitle="Pretérito Perfecto"
-            onSubmit={handleRating}
+            topicType="tense"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>

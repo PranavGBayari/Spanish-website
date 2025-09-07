@@ -312,7 +312,10 @@ const Present = () => {
           <RatingFeedback 
             topicId="present"
             topicTitle="Present Tense"
-            onSubmit={handleRating}
+            topicType="tense"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>

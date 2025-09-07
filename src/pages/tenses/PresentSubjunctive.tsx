@@ -273,7 +273,10 @@ const PresentSubjunctive = () => {
           <RatingFeedback 
             topicId="present-subjunctive"
             topicTitle="Present Subjunctive"
-            onSubmit={handleRating}
+            topicType="tense"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>

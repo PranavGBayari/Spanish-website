@@ -196,10 +196,13 @@ const TenseDetail = () => {
 
           {/* Rating and Feedback System */}
           <RatingFeedback 
-            topicId={tenseSlug}
-            topicTitle={tense.name}
-            onSubmit={handleRating}
-          />
+  topicId={tenseSlug}
+  topicTitle={tense.name}
+  topicType="tense"
+  onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
+/>
         </div>
       </div>
     </div>

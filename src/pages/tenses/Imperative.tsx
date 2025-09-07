@@ -269,7 +269,10 @@ const Imperative = () => {
           <RatingFeedback 
             topicId="imperative"
             topicTitle="Imperative"
-            onSubmit={handleRating}
+            topicType="tense"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>

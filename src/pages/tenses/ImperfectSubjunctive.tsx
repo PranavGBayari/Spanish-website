@@ -258,7 +258,10 @@ const ImperfectSubjunctive = () => {
           <RatingFeedback 
             topicId="imperfect-subjunctive"
             topicTitle="Imperfect Subjunctive"
-            onSubmit={handleRating}
+            topicType="tense"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>

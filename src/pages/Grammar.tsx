@@ -129,12 +129,14 @@ const Grammar = () => {
   const igcseProgress = grammarTopics.igcse.map(topic => ({
     id: topic.id,
     name: topic.name,
+    type: 'grammar',
     completed: completedTopics.includes(topic.id)
   }));
 
   const ibProgress = grammarTopics.ib.map(topic => ({
     id: topic.id,
     name: topic.name,
+    type: 'grammar',
     completed: completedTopics.includes(topic.id)
   }));
 

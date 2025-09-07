@@ -374,7 +374,10 @@ const Indefenido = () => {
           <RatingFeedback 
             topicId="indefenido"
             topicTitle="Past tense"
-            onSubmit={handleRating}
+            topicType="tense"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>
