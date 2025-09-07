@@ -12,6 +12,24 @@ const GrammarTopic = () => {
 
   // This will be replaced with actual data later
   const topicData = {
+    'days-of-week': {
+      title: 'Days of the Week',
+      level: 'IGCSE',
+      description: 'Master the days of the week in Spanish',
+      content: 'This section will contain comprehensive information about the days of the week in Spanish including their pronunciation, usage in sentences, and cultural notes.'
+    },
+    'numbers-spanish': {
+      title: 'Numbers in spanish',
+      level: 'IGCSE',
+      description: 'Learn to count and use numbers in Spanish',
+      content: 'This section will cover numbers from 0 to 100 and beyond, including their pronunciation, usage in various contexts like telling time, dates, and quantities.'
+    },
+    'articles-spanish': {
+      title: 'Articles in Spanish',
+      level: 'IGCSE',
+      description: 'Understand definite and indefinite articles',
+      content: 'This section will explain the use of definite articles (el, la, los, las) and indefinite articles (un, una, unos, unas) in Spanish grammar.'
+    },
     'basic-pronouns': {
       title: 'Basic Pronouns',
       level: 'IGCSE',
@@ -48,35 +66,11 @@ const GrammarTopic = () => {
       description: 'Master direct and indirect object pronouns',
       content: 'Advanced pronoun usage including direct object pronouns (lo, la, los, las) and indirect object pronouns (le, les, me, te, nos, os).'
     },
-    'subjunctive-present': {
-      title: 'Present Subjunctive',
-      level: 'IB',
-      description: 'Express doubt, emotion, and desire',
-      content: 'Learn the present subjunctive mood for expressing uncertainty, emotions, desires, and hypothetical situations.'
-    },
     'complex-connectors': {
       title: 'Complex Connectors',
       level: 'IB',
       description: 'Advanced linking words and phrases',
       content: 'Master sophisticated connectors like sin embargo (however), por tanto (therefore), a pesar de (despite), and others.'
-    },
-    'conditional': {
-      title: 'Conditional Tense',
-      level: 'IB',
-      description: 'Express hypothetical situations',
-      content: 'Learn to use the conditional tense for polite requests, hypothetical situations, and expressing what would happen.'
-    },
-    'future-perfect': {
-      title: 'Future Perfect',
-      level: 'IB',
-      description: 'Talk about future completed actions',
-      content: 'Master the future perfect tense to express actions that will be completed by a certain point in the future.'
-    },
-    'subjunctive-imperfect': {
-      title: 'Imperfect Subjunctive',
-      level: 'IB',
-      description: 'Advanced subjunctive forms',
-      content: 'Learn the imperfect subjunctive for complex hypothetical situations and formal expressions.'
     },
     'passive-voice': {
       title: 'Passive Voice',
@@ -176,94 +170,14 @@ const GrammarTopic = () => {
             </CardContent>
           </Card>
 
-          {/* Common Mistakes */}
-          <Card className="p-8">
-            <CardHeader className="text-center pb-6">
-              <CardTitle className="text-2xl">Common Mistakes to Avoid</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-red-50 p-6 rounded-lg">
-                <p className="text-gray-700">
-                  Common mistakes and pitfalls will be listed here with explanations and corrections.
-                </p>
-                <ul className="mt-4 space-y-2 text-gray-600">
-                  <li>• Mistake example 1</li>
-                  <li>• Mistake example 2</li>
-                  <li>• Mistake example 3</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Irregular Information */}
-          <Card className="p-8">
-            <CardHeader className="text-center pb-6">
-              <CardTitle className="text-2xl">Irregular Information</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-yellow-50 p-6 rounded-lg">
-                <p className="text-gray-700">
-                  Special cases, irregular forms, and exceptions will be documented here.
-                </p>
-                <div className="mt-4">
-                  <table className="w-full border-collapse border border-gray-300">
-                    <thead>
-                      <tr className="bg-gray-100">
-                        <th className="border border-gray-300 p-2">Form</th>
-                        <th className="border border-gray-300 p-2">Example</th>
-                        <th className="border border-gray-300 p-2">Translation</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="border border-gray-300 p-2">Irregular form 1</td>
-                        <td className="border border-gray-300 p-2">Example</td>
-                        <td className="border border-gray-300 p-2">Translation</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Time Expressions */}
-          <Card className="p-8">
-            <CardHeader className="text-center pb-6">
-              <CardTitle className="text-2xl">Time Expressions</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <p className="text-gray-700">
-                  Time expressions commonly used with this topic will be listed here.
-                </p>
-                <div className="mt-4 grid md:grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="font-semibold mb-2">Frequency</h4>
-                    <ul className="space-y-1 text-gray-600">
-                      <li>• siempre (always)</li>
-                      <li>• nunca (never)</li>
-                      <li>• a veces (sometimes)</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Time indicators</h4>
-                    <ul className="space-y-1 text-gray-600">
-                      <li>• hoy (today)</li>
-                      <li>• ayer (yesterday)</li>
-                      <li>• mañana (tomorrow)</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
           {/* Rating and Feedback System */}
           <RatingFeedback 
             topicId={topicId}
             topicTitle={topic.title}
-            onSubmit={handleRating}
+            topicType="grammar"
+            onSubmit={(rating, feedback) => {
+    console.log('Rating submitted:', rating, feedback);
+  }}
           />
         </div>
       </div>
