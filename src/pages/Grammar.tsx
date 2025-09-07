@@ -59,15 +59,14 @@ const Grammar = () => {
       { id: 'indefenido', name: 'PastTense', color: 'bg-green-500', description: 'Past simple actions - Talk about completed events in the past' },
       { id: 'imperfect-preterito', name: 'Imperfect Tense', color: 'bg-green-500', description: 'Ongoing past actions - Describe habits, descriptions, and background events' },
       { id: 'future', name: 'Future Tense', color: 'bg-green-500', description: 'Talk about future plans and intentions' },
-      { id: 'perefecto', name: 'Pretérito Perfecto', color: 'bg-green-500', description: 'Recent past actions - Discuss events that have relevance to the present' },
+      { id: 'preterito-perefecto', name: 'Pretérito Perfecto', color: 'bg-green-500', description: 'Recent past actions - Discuss events that have relevance to the present' },
     ],
     ib: [
       { id: 'advanced-pronouns', name: 'Advanced Pronouns', color: 'bg-red-500', description: 'Direct/indirect object pronouns - Master complex pronoun placement and usage' },
-      { id: 'conditional', name: 'Conditional Tense', color: 'bg-red-500', description: 'Would, could, should - Express hypothetical situations and polite requests' },
-      { id: 'subjunctive-present', name: 'Present Subjunctive', color: 'bg-red-500', description: 'Expressing doubt, emotion - Navigate the complex world of subjunctive mood' },
+      { id: 'present-subjunctive', name: 'Present Subjunctive', color: 'bg-red-500', description: 'Expressing doubt, emotion - Navigate the complex world of subjunctive mood' },
       { id: 'complex-connectors', name: 'Complex Connectors', color: 'bg-red-500', description: 'Sin embargo, por tanto, a pesar de... - Create sophisticated, academic-level writing' },
       { id: 'conditional', name: 'Conditional Tense', color: 'bg-red-500', description: 'Would, could, should - Express hypothetical situations and polite requests' },
-      { id: 'subjunctive-imperfect', name: 'Imperfect Subjunctive', color: 'bg-purple-500', description: 'Advanced subjunctive forms - Handle complex hypothetical and formal situations' },
+      { id: 'imperfect-subjunctive', name: 'Imperfect Subjunctive', color: 'bg-purple-500', description: 'Advanced subjunctive forms - Handle complex hypothetical and formal situations' },
       { id: 'passive-voice', name: 'Passive Voice', color: 'bg-purple-500', description: 'Ser + past participle - Express actions without specifying the doer' },
     ]
   };
