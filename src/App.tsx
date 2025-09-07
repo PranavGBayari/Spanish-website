@@ -50,7 +50,18 @@ const App = () => (
             <Route path="/grammar/:topicId" element={<GrammarTopic />} />
             <Route path="/tenses" element={<Tenses />} />
             <Route path="/tense/:tenseSlug" element={<TenseDetail />} />
-            // ...existing code...
+            <Route path="/tense/preterito-perfecto" element={<PreteritoPerfecto />} />
+            <Route path="/tense/pluscuamperfecto" element={<Pluscuamperfecto />} />
+            <Route path="/tense/present-subjunctive" element={<PresentSubjunctive />} />
+            <Route path="/tense/imperfect-subjunctive" element={<ImperfectSubjunctive />} />
+            <Route path="/tense/present-continuous" element={<PresentContinuous />} />
+            <Route path="/tense/imperative" element={<Imperative />} />
+            <Route path="/tense/indefenido" element={<Indefenido />} />
+            <Route path="/tense/imperfect-preterito" element={<ImperfectPreterito />} />
+            <Route path="/tense/present" element={<Present />} />
+            <Route path="/tense/perfecto" element={<Perfecto />} />
+            <Route path="/tense/future" element={<Future />} />
+            <Route path="/tense/conditional" element={<Conditional />} />
             <Route path="/practice" element={<FillInTheBlanks />} />
             <Route path="/word-of-the-day" element={<WordOfTheDay />} />
             <Route path="/about" element={<About />} />
