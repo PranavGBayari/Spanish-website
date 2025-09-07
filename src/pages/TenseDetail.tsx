@@ -10,9 +10,151 @@ import RatingFeedback from '@/components/RatingFeedback';
 const TenseDetail = () => {
   const { tenseSlug } = useParams();
 
-  // Placeholder data - will be expanded later
+  // Tense data for all relevant tenses
   const tenseData = {
-    
+    'present-subjunctive': {
+      name: 'Present Subjunctive',
+      level: 'Advanced',
+      spanish: 'Presente de Subjuntivo',
+      description: 'Express doubt, emotion, or desire in present.',
+      formation: 'Take the yo form of present indicative, remove -o, add subjunctive endings.',
+      usage: 'Used after expressions of doubt, emotion, desire, or uncertainty in the present.',
+      examples: [
+        'Es importante que tú estudies.',
+        'Ojalá que llueva mañana.',
+        'No creo que él venga.'
+      ]
+    },
+    'imperfect-subjunctive': {
+      name: 'Imperfect Subjunctive',
+      level: 'Advanced',
+      spanish: 'Imperfecto de Subjuntivo',
+      description: 'Express doubt, emotion, or desire in the past.',
+      formation: 'Take the third person plural (ellos) preterite form, remove -ron, add imperfect subjunctive endings.',
+      usage: 'Used after expressions of doubt, emotion, desire, or uncertainty in the past.',
+      examples: [
+        'Si yo fuera rico, viajaría por el mundo.',
+        'Quería que tú vinieras.',
+        'Era posible que ellos llegaran tarde.'
+      ]
+    },
+    'present': {
+      name: 'Present Simple',
+      level: 'Basic',
+      spanish: 'Presente Simple',
+      description: 'Habitual actions and general truths.',
+      formation: 'Remove infinitive ending, add present endings.',
+      usage: 'Used for actions happening now or regularly.',
+      examples: [
+        'Yo como pan.',
+        'Tú estudias español.',
+        'Ellos viven en Madrid.'
+      ]
+    },
+    'present-continuous': {
+      name: 'Present Continuous',
+      level: 'Basic',
+      spanish: 'Gerundio',
+      description: 'Actions happening right now.',
+      formation: 'Estar + gerundio.',
+      usage: 'Used for actions occurring at the moment of speaking.',
+      examples: [
+        'Estoy estudiando.',
+        'Estamos comiendo.',
+        '¿Qué estás haciendo?'
+      ]
+    },
+    'Indefenido': {
+      name: 'Past tense',
+      level: 'Intermediate',
+      spanish: 'Pretérito indefenido',
+      description: 'Completed past actions.',
+      formation: 'Remove infinitive ending, add preterite endings.',
+      usage: 'Used for actions completed in the past.',
+      examples: [
+        'Ayer comí pizza.',
+        'Ellos viajaron a España.',
+        '¿Fuiste al cine?'
+      ]
+    },
+    'imperfect-preterito': {
+      name: 'Imperfect',
+      level: 'Intermediate',
+      spanish: 'Imperfecto',
+      description: 'Ongoing past actions.',
+      formation: 'Remove infinitive ending, add imperfect endings.',
+      usage: 'Used for habitual or ongoing actions in the past.',
+      examples: [
+        'Cuando era niño, jugaba mucho.',
+        'Siempre comíamos juntos.',
+        'Ella leía mientras yo escribía.'
+      ]
+    },
+    'perfecto': {
+      name: 'Pretérito Perfecto',
+      level: 'Intermediate',
+      spanish: 'Pretérito Perfecto',
+      description: 'Actions completed in a recent past period.',
+      formation: 'Haber + past participle.',
+      usage: 'Used for actions completed recently.',
+      examples: [
+        'He comido.',
+        '¿Has visto la película?',
+        'Hemos terminado el trabajo.'
+      ]
+    },
+    'pluscuamperfecto': {
+      name: 'Pluscuamperfecto',
+      level: 'Advanced',
+      spanish: 'Pluscuamperfecto',
+      description: 'Actions completed before another past action.',
+      formation: 'Había + past participle.',
+      usage: 'Used for actions that happened before another past event.',
+      examples: [
+        'Cuando llegué, ellos ya habían salido.',
+        'Nunca había visto algo así.',
+        'Habíamos terminado antes de cenar.'
+      ]
+    },
+    'future': {
+      name: 'Future Simple',
+      level: 'Intermediate',
+      spanish: 'Futuro Simple',
+      description: 'Actions that will happen.',
+      formation: 'Infinitive + future endings.',
+      usage: 'Used for actions that will occur.',
+      examples: [
+        'Mañana viajaré a Barcelona.',
+        '¿Vendrás a la fiesta?',
+        'Ellos estudiarán medicina.'
+      ]
+    },
+    'conditional': {
+      name: 'Conditional',
+      level: 'Advanced',
+      spanish: 'Condicional',
+      description: 'Actions that would happen.',
+      formation: 'Infinitive + conditional endings.',
+      usage: 'Used for hypothetical actions.',
+      examples: [
+        'Yo viajaría si tuviera dinero.',
+        '¿Te gustaría venir?',
+        'Comerías más si tuvieras hambre.'
+      ]
+    },
+    'imperative': {
+      name: 'Imperative',
+      level: 'Intermediate',
+      spanish: 'Imperativo',
+      description: 'Commands, orders, and instructions.',
+      formation: 'Use imperative endings for commands.',
+      usage: 'Used to give orders or instructions.',
+      examples: [
+        '¡Ven aquí!',
+        'Haz la tarea.',
+        'No hables.'
+      ]
+    }
   };
 
   const tense = tenseData[tenseSlug];
