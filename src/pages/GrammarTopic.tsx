@@ -175,12 +175,14 @@ const GrammarTopic = () => {
           </Card>
 
           {/* Rating and Feedback System */}
-          <RatingFeedback 
-            key={topicId}
-            topicTitle={topic.name}
-            topicType="grammar"
-            onSubmit={handleRating}
-          />
+          {/* Rating and Feedback System */}
+<RatingFeedback 
+  key={topicId}
+  topicId={topicId}
+  topicTitle={topic.title}
+  topicType="grammar"
+  onSubmit={handleRating}
+/>
         </div>
       </div>
     </div>

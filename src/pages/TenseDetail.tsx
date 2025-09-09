@@ -337,13 +337,13 @@ const TenseDetail = () => {
           </Card>
 
           {/* Rating and Feedback System */}
-          <RatingFeedback 
-  key={TenseSlug}
+          {/* Rating and Feedback System */}
+<RatingFeedback 
+  key={tenseSlug}
+  topicId={tenseSlug || ''}
   topicTitle={tense.name}
   topicType="tense"
-  onSubmit={(rating, feedback) => {
-    console.log('Rating submitted:', rating, feedback);
-  }}
+  onSubmit={handleRating}
 />
         </div>
       </div>
