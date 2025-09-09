@@ -18,7 +18,6 @@ interface ProgressTrackerProps {
 const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
   const { summary, isTopicCompleted, loading, hasUser } = useUserProgress();
 
-
   if (loading) {
     return (
       <Card className="mb-8 bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200">
@@ -38,7 +37,7 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
   let totalTopics = allTopics.length;
 
   if (hasUser) {
-    // Calculate completed topics live
+    // Calculate completed topics from database
     igcseCompleted = igcseTopics.filter(t => isTopicCompleted(t.id, t.type)).length;
     ibCompleted = ibTopics.filter(t => isTopicCompleted(t.id, t.type)).length;
     totalCompleted = igcseCompleted + ibCompleted;
@@ -108,34 +107,10 @@ const ProgressTracker = ({ igcseTopics, ibTopics }: ProgressTrackerProps) => {
           </div>
         </div>
 
-        {/* Recent Completions */}
-        {hasUser && summary && (summary.grammar_completed > 0 || summary.tense_completed > 0) && (
-          <div className="mt-4 p-3 bg-white/70 rounded-lg">
-            <h4 className="font-medium text-gray-700 mb-2">Your Achievements</h4>
-            <div className="flex flex-wrap gap-2">
-              {summary.grammar_completed > 0 && (
-                <Badge variant="secondary" className="text-xs">
-                  {summary.grammar_completed} Grammar Topics
-                </Badge>
-              )}
-              {summary.tense_completed > 0 && (
-                <Badge variant="secondary" className="text-xs">
-                  {summary.tense_completed} Tenses Mastered
-                </Badge>
-              )}
-              {summary.average_rating && summary.average_rating >= 4 && (
-                <Badge variant="secondary" className="text-xs bg-yellow-100 text-yellow-800">
-                  High Performer ⭐
-                </Badge>
-              )}
-            </div>
-          </div>
-        )}
-
         {/* Placeholder for guests */}
         {!hasUser && (
           <div className="mt-4 p-3 bg-white/70 rounded-lg text-center">
-            <h4 className="font-medium text-gray-700 mb-2">Sign in to track your progress and achievements!</h4>
+            <h4 className="font-medium text-gray-700 mb-2">Sign in to track your progress!</h4>
           </div>
         )}
       </CardContent>

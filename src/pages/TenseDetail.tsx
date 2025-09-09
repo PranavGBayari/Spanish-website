@@ -338,7 +338,7 @@ const TenseDetail = () => {
 
           {/* Rating and Feedback System */}
           <RatingFeedback 
-  topicId={tenseSlug}
+  key={TenseSlug}
   topicTitle={tense.name}
   topicType="tense"
   onSubmit={(rating, feedback) => {

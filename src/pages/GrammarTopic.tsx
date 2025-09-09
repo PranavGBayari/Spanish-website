@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -8,10 +7,15 @@ import { ArrowLeft, BookOpen, Target, Users } from 'lucide-react';
 import RatingFeedback from '@/components/RatingFeedback';
 
 const GrammarTopic = () => {
-  const { topicId } = useParams();
+  const { topicId } = useParams<{ topicId: string }>();
 
   // This will be replaced with actual data later
-  const topicData = {
+  const topicData: Record<string, {
+    title: string;
+    level: string;
+    description: string;
+    content: string;
+  }> = {
     'days-of-week': {
       title: 'Days of the Week',
       level: 'IGCSE',
@@ -80,7 +84,7 @@ const GrammarTopic = () => {
     }
   };
 
-  const topic = topicData[topicId];
+  const topic = topicId ? topicData[topicId] : undefined;
 
   const handleRating = (rating: number, feedback: string) => {
     console.log(`Topic: ${topicId}, Rating: ${rating}, Feedback: ${feedback}`);
@@ -88,7 +92,7 @@ const GrammarTopic = () => {
     // For now, it's stored in localStorage and can be accessed via browser console
   };
 
-  if (!topic) {
+  if (!topic || !topicId) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
         <div className="container mx-auto px-4 text-center">
@@ -131,7 +135,7 @@ const GrammarTopic = () => {
           </p>
         </div>
 
-          {/* Content Section */}
+        {/* Content Section */}
         <div className="max-w-4xl mx-auto space-y-8">
           <Card className="p-8">
             <CardHeader className="text-center pb-6">
@@ -172,12 +176,10 @@ const GrammarTopic = () => {
 
           {/* Rating and Feedback System */}
           <RatingFeedback 
-            topicId={topicId}
-            topicTitle={topic.title}
+            key={topicId}
+            topicTitle={topic.name}
             topicType="grammar"
-            onSubmit={(rating, feedback) => {
-    console.log('Rating submitted:', rating, feedback);
-  }}
+            onSubmit={handleRating}
           />
         </div>
       </div>

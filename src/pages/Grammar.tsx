@@ -1,48 +1,14 @@
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, ArrowRight } from 'lucide-react';
 import ProgressTracker from '@/components/ProgressTracker';
-import { supabase } from '@/integrations/supabase/client';
-import { useAuth } from '@/hooks/useAuth';
+import { useUserProgress } from '@/hooks/useUserProgress';
 
 const Grammar = () => {
-  const [completedTopics, setCompletedTopics] = useState<string[]>([]);
-  const { user } = useAuth();
-
-  // Load completed topics from database
-  useEffect(() => {
-    const loadProgress = async () => {
-      if (!user) {
-        // Load from localStorage for non-authenticated users
-        const completed = [];
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          if (key && key.startsWith('rating_')) {
-            completed.push(key.replace('rating_', ''));
-          }
-        }
-        setCompletedTopics(completed);
-        return;
-      }
-
-      // TODO: Implement database progress loading after migration is complete
-      // For now, fall back to localStorage
-      const completed = [];
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key && key.startsWith('rating_')) {
-          completed.push(key.replace('rating_', ''));
-        }
-      }
-      setCompletedTopics(completed);
-    };
-
-    loadProgress();
-  }, [user]);
+  const { isTopicCompleted } = useUserProgress();
 
   const grammarTopics = {
     igcse: [
@@ -96,7 +62,7 @@ const Grammar = () => {
                   <div className="flex-1">
                     <CardTitle className="text-lg group-hover:text-primary transition-colors mb-2">
                       {topic.name}
-                      {completedTopics.includes(topic.id) && (
+                      {isTopicCompleted(topic.id, topic.id === 'present' || topic.id === 'present-continuous' || topic.id === 'indefenido' || topic.id === 'imperfect-preterito' || topic.id === 'perfecto' || topic.id === 'future' || topic.id === 'conditional' || topic.id === 'present-subjunctive' || topic.id === 'imperfect-subjunctive' ? 'tense' : 'grammar') && (
                         <Badge variant="secondary" className="ml-2 bg-green-100 text-green-800">
                           ✓ Completed
                         </Badge>
@@ -124,20 +90,24 @@ const Grammar = () => {
     </div>
   );
 
-  // Prepare progress data
-  const igcseProgress = grammarTopics.igcse.map(topic => ({
-    id: topic.id,
-    name: topic.name,
-    type: 'grammar',
-    completed: completedTopics.includes(topic.id)
-  }));
+  // Prepare progress data - separate grammar and tense topics correctly
+  const igcseProgress = grammarTopics.igcse.map(topic => {
+    const isTense = ['present', 'present-continuous', 'indefenido', 'imperfect-preterito', 'perfecto', 'future', 'conditional'].includes(topic.id);
+    return {
+      id: topic.id,
+      name: topic.name,
+      type: isTense ? 'tense' : 'grammar',
+    };
+  });
 
-  const ibProgress = grammarTopics.ib.map(topic => ({
-    id: topic.id,
-    name: topic.name,
-    type: 'grammar',
-    completed: completedTopics.includes(topic.id)
-  }));
+  const ibProgress = grammarTopics.ib.map(topic => {
+    const isTense = ['present-subjunctive', 'imperfect-subjunctive', 'conditional'].includes(topic.id);
+    return {
+      id: topic.id,
+      name: topic.name,
+      type: isTense ? 'tense' : 'grammar',
+    };
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
