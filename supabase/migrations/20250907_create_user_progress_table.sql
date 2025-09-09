@@ -97,3 +97,69 @@ CREATE TRIGGER update_user_progress_updated_at
   BEFORE UPDATE ON public.user_progress
   FOR EACH ROW
   EXECUTE FUNCTION public.update_user_progress_updated_at();
+
+  -- Add missing fields for full Word of the Day info
+ALTER TABLE public.word_of_the_day
+ADD COLUMN IF NOT EXISTS etymology TEXT,
+ADD COLUMN IF NOT EXISTS related_noun TEXT,
+ADD COLUMN IF NOT EXISTS related_verb TEXT,
+ADD COLUMN IF NOT EXISTS related_adjective TEXT;
+
+-- Update the function to return new fields too
+CREATE OR REPLACE FUNCTION public.get_todays_word()
+RETURNS TABLE (
+  id UUID,
+  spanish_word TEXT,
+  english_translation TEXT,
+  pronunciation TEXT,
+  part_of_speech TEXT,
+  example_spanish TEXT,
+  example_english TEXT,
+  difficulty_level TEXT,
+  category TEXT,
+  etymology TEXT,
+  related_noun TEXT,
+  related_verb TEXT,
+  related_adjective TEXT
+)
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
+  word_count INTEGER;
+  day_of_year INTEGER;
+  word_index INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO word_count 
+  FROM public.word_of_the_day 
+  WHERE is_active = true;
+
+  IF word_count = 0 THEN
+    RETURN;
+  END IF;
+
+  SELECT EXTRACT(DOY FROM CURRENT_DATE)::INTEGER INTO day_of_year;
+  word_index := (day_of_year - 1) % word_count;
+
+  RETURN QUERY
+  SELECT 
+    w.id,
+    w.spanish_word,
+    w.english_translation,
+    w.pronunciation,
+    w.part_of_speech,
+    w.example_spanish,
+    w.example_english,
+    w.difficulty_level,
+    w.category,
+    w.etymology,
+    w.related_noun,
+    w.related_verb,
+    w.related_adjective
+  FROM public.word_of_the_day w
+  WHERE w.is_active = true
+  ORDER BY w.created_at
+  LIMIT 1 OFFSET word_index;
+END;
+$$;

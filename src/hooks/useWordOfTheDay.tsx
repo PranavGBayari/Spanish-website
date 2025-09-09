@@ -11,9 +11,9 @@ export function useWordOfTheDay() {
     try {
       setLoading(true);
       setError(null);
-      
-      const { data, error: fetchError } = await (supabase as any)
-        .rpc('get_todays_word');
+
+          const { data, error: fetchError } = await (supabase as any)
+      .rpc('get_todays_word');
 
       if (fetchError) {
         throw fetchError;
@@ -32,10 +32,6 @@ export function useWordOfTheDay() {
     }
   }, []);
 
-  const refreshWord = useCallback(() => {
-    fetchTodaysWord();
-  }, [fetchTodaysWord]);
-
   useEffect(() => {
     fetchTodaysWord();
   }, [fetchTodaysWord]);
@@ -44,6 +40,6 @@ export function useWordOfTheDay() {
     word,
     loading,
     error,
-    refreshWord
+    refreshWord: fetchTodaysWord
   };
 }
