@@ -38,57 +38,57 @@ const Grammar = () => {
   };
 
   const SubwayStation = ({ topic, level, index, isLast }) => (
-    <div className="flex items-start mb-8">
-      <div className="relative flex items-start w-full">
-        {/* Subway line */}
-        {!isLast && (
-          <div className={`absolute top-12 left-4 w-0.5 h-20 ${topic.color.replace('bg-', 'bg-')}`}></div>
-        )}
-        
-        {/* Station circle */}
-        <div className={`w-8 h-8 rounded-full ${topic.color} flex items-center justify-center z-10 relative mt-2 flex-shrink-0`}>
-          <MapPin className="w-4 h-4 text-white" />
-        </div>
-        
-        {/* Station info */}
-        <div className="ml-6 flex-1">
-          <Link 
-            to={topic.id === 'present' || topic.id === 'present-continuous' || topic.id === 'indefenido' || topic.id === 'imperfect-preterito' || topic.id === 'perfecto' || topic.id === 'future' || topic.id === 'conditional' || topic.id === 'present-subjunctive' || topic.id === 'imperfect-subjunctive' ? `/tense/${topic.id}` : `/grammar/${topic.id}`}
-            className="group block"
-          >
-            <Card className="hover:shadow-lg transition-all duration-200 group-hover:border-primary min-h-[140px] h-full">
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between mb-2">
-                  <div className="flex-1">
-                    <CardTitle className="text-lg group-hover:text-primary transition-colors mb-2">
-                      {topic.name}
-                      {isTopicCompleted(topic.id, topic.id === 'present' || topic.id === 'present-continuous' || topic.id === 'indefenido' || topic.id === 'imperfect-preterito' || topic.id === 'perfecto' || topic.id === 'future' || topic.id === 'conditional' || topic.id === 'present-subjunctive' || topic.id === 'imperfect-subjunctive' ? 'tense' : 'grammar') && (
-                        <Badge variant="secondary" className="ml-2 bg-green-100 text-green-800">
-                          ✓ Completed
-                        </Badge>
-                      )}
-                    </CardTitle>
-                    <Badge variant={level === 'igcse' ? 'default' : 'destructive'} className="mb-2">
-                      {level.toUpperCase()}
-                    </Badge>
-                  </div>
+  <div className="flex items-start mb-8">
+    <div className="relative flex items-start w-full">
+      {/* Subway line */}
+      {!isLast && (
+        <div className={`absolute top-12 left-4 w-0.5 h-20 ${topic.color.replace('bg-', 'bg-')}`}></div>
+      )}
+      
+      {/* Station circle */}
+      <div className={`w-8 h-8 rounded-full ${topic.color} flex items-center justify-center z-10 relative mt-2 flex-shrink-0`}>
+        <MapPin className="w-4 h-4 text-white" />
+      </div>
+      
+      {/* Station info */}
+      <div className="ml-6 flex-1">
+        <Link 
+          to={`/grammar/${topic.id}`} // Direct link to individual grammar pages
+          className="group block"
+        >
+          <Card className="hover:shadow-lg transition-all duration-200 group-hover:border-primary min-h-[140px] h-full">
+            <CardHeader className="pb-3">
+              <div className="flex items-start justify-between mb-2">
+                <div className="flex-1">
+                  <CardTitle className="text-lg group-hover:text-primary transition-colors mb-2">
+                    {topic.name}
+                    {isTopicCompleted(topic.id, 'grammar') && (
+                      <Badge variant="secondary" className="ml-2 bg-green-100 text-green-800">
+                        ✓ Completed
+                      </Badge>
+                    )}
+                  </CardTitle>
+                  <Badge variant={level === 'igcse' ? 'default' : 'destructive'} className="mb-2">
+                    {level.toUpperCase()}
+                  </Badge>
                 </div>
-                <CardDescription className="text-sm leading-relaxed">
-                  {topic.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-0 pb-4">
-                <div className="flex items-center text-sm text-muted-foreground group-hover:text-primary transition-colors">
-                  <span>Start learning</span>
-                  <ArrowRight className="w-3 h-3 ml-1" />
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-        </div>
+              </div>
+              <CardDescription className="text-sm leading-relaxed">
+                {topic.description}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="pt-0 pb-4">
+              <div className="flex items-center text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                <span>Start learning</span>
+                <ArrowRight className="w-3 h-3 ml-1" />
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
       </div>
     </div>
-  );
+  </div>
+);
 
   // Prepare progress data - separate grammar and tense topics correctly
   const igcseProgress = grammarTopics.igcse.map(topic => {

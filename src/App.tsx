@@ -30,6 +30,9 @@ import Perfecto from "./pages/tenses/Perfecto";
 import Future from "./pages/tenses/Future";
 import Conditional from "./pages/tenses/Conditional";
 
+/* grammar */
+import DaysOfTheWeek from "./pages/grammar/DaysOfTheWeek";
+
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
@@ -62,6 +65,7 @@ const App = () => (
             <Route path="/tense/perfecto" element={<Perfecto />} />
             <Route path="/tense/future" element={<Future />} />
             <Route path="/tense/conditional" element={<Conditional />} />
+            <Route path="/grammar/days-of-week" element={<DaysOfTheWeek />} />
             <Route path="/practice" element={<FillInTheBlanks />} />
             <Route path="/word-of-the-day" element={<WordOfTheDay />} />
             <Route path="/about" element={<About />} />
