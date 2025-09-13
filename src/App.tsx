@@ -30,13 +30,18 @@ import Perfecto from "./pages/tenses/Perfecto";
 import Future from "./pages/tenses/Future";
 import Conditional from "./pages/tenses/Conditional";
 
-/* grammar */
+/* grammar topics */
 import DaysOfTheWeek from "./pages/grammar/DaysOfTheWeek";
 import NumbersSpanish from "./pages/grammar/NumbersSpanish";
 import ArticlesSpanish from "./pages/grammar/ArticlesSpanish";
 import BasicPronouns from "./pages/grammar/BasicPronouns";
 import PossessiveAdjectives from "./pages/grammar/PossessiveAdjectives";
 import SerEstar from "./pages/grammar/SerEstar";
+import PlacePrepositions from "./pages/grammar/PlacePrepositions";
+import BasicConnectors from "./pages/grammar/BasicConnectors";
+import AdvancedPronouns from "./pages/grammar/AdvancedPronouns";
+import ComplexConnectors from "./pages/grammar/ComplexConnectors";
+import PassiveVoice from "./pages/grammar/PassiveVoice";
 
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
@@ -54,15 +59,21 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
-            
+
             <Route path="/grammar" element={<Grammar />} />
             <Route path="/grammar/:topicId" element={<GrammarTopic />} />
+            {/* Grammar topic routes */}
             <Route path="/grammar/days-of-week" element={<DaysOfTheWeek />} />
             <Route path="/grammar/numbers-spanish" element={<NumbersSpanish />} />
             <Route path="/grammar/articles-spanish" element={<ArticlesSpanish />} />
             <Route path="/grammar/basic-pronouns" element={<BasicPronouns />} />
             <Route path="/grammar/possessive-adjectives" element={<PossessiveAdjectives />} />
             <Route path="/grammar/ser-estar" element={<SerEstar />} />
+            <Route path="/grammar/place-prepositions" element={<PlacePrepositions />} />
+            <Route path="/grammar/basic-connectors" element={<BasicConnectors />} />
+            <Route path="/grammar/advanced-pronouns" element={<AdvancedPronouns />} />
+            <Route path="/grammar/complex-connectors" element={<ComplexConnectors />} />
+            <Route path="/grammar/passive-voice" element={<PassiveVoice />} />
             <Route path="/practice" element={<FillInTheBlanks />} />
 
             <Route path="/tenses" element={<Tenses />} />
