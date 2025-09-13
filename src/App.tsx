@@ -32,6 +32,11 @@ import Conditional from "./pages/tenses/Conditional";
 
 /* grammar */
 import DaysOfTheWeek from "./pages/grammar/DaysOfTheWeek";
+import NumbersSpanish from "./pages/grammar/NumbersSpanish";
+import ArticlesSpanish from "./pages/grammar/ArticlesSpanish";
+import BasicPronouns from "./pages/grammar/BasicPronouns";
+import PossessiveAdjectives from "./pages/grammar/PossessiveAdjectives";
+import SerEstar from "./pages/grammar/SerEstar";
 
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
@@ -49,8 +54,17 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
+            
             <Route path="/grammar" element={<Grammar />} />
             <Route path="/grammar/:topicId" element={<GrammarTopic />} />
+            <Route path="/grammar/days-of-week" element={<DaysOfTheWeek />} />
+            <Route path="/grammar/numbers-spanish" element={<NumbersSpanish />} />
+            <Route path="/grammar/articles-spanish" element={<ArticlesSpanish />} />
+            <Route path="/grammar/basic-pronouns" element={<BasicPronouns />} />
+            <Route path="/grammar/possessive-adjectives" element={<PossessiveAdjectives />} />
+            <Route path="/grammar/ser-estar" element={<SerEstar />} />
+            <Route path="/practice" element={<FillInTheBlanks />} />
+
             <Route path="/tenses" element={<Tenses />} />
             <Route path="/tense/:tenseSlug" element={<TenseDetail />} />
             <Route path="/tense/preterito-perfecto" element={<PreteritoPerfecto />} />
@@ -65,8 +79,7 @@ const App = () => (
             <Route path="/tense/perfecto" element={<Perfecto />} />
             <Route path="/tense/future" element={<Future />} />
             <Route path="/tense/conditional" element={<Conditional />} />
-            <Route path="/grammar/days-of-week" element={<DaysOfTheWeek />} />
-            <Route path="/practice" element={<FillInTheBlanks />} />
+
             <Route path="/word-of-the-day" element={<WordOfTheDay />} />
             <Route path="/about" element={<About />} />
             <Route path="/igcse" element={<IGCSE />} />
