@@ -62,11 +62,13 @@ const Grammar = () => {
                 <div className="flex-1">
                   <CardTitle className="text-lg group-hover:text-primary transition-colors mb-2">
                     {topic.name}
-                    {isTopicCompleted(topic.id, 'grammar') && (
+                    {isTopicCompleted &&
+                      isTopicCompleted(topic.id, 'grammar') && (
                       <Badge variant="secondary" className="ml-2 bg-green-100 text-green-800">
                         ✓ Completed
                       </Badge>
-                    )}
+                      )
+                    }
                   </CardTitle>
                   <Badge variant={level === 'igcse' ? 'default' : 'destructive'} className="mb-2">
                     {level.toUpperCase()}
