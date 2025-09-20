@@ -15,6 +15,7 @@ import WordOfTheDay from "./pages/WordOfTheDay";
 import About from "./pages/About";
 import IGCSE from "./pages/IGCSE";
 import IB from "./pages/IB";
+import { Analytics } from '@vercel/analytics/react';
 
 /* tenses */
 import PreteritoPerfecto from "./pages/tenses/PreteritoPerfecto";
@@ -98,6 +99,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        <Analytics />
       </TooltipProvider>
     </AuthProvider>
   </QueryClientProvider>
