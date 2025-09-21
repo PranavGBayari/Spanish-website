@@ -139,6 +139,17 @@ const SubwayStation = ({ topic, level, index, isLast }) => {
         {/* Progress Tracker */}
         <ProgressTracker igcseTopics={igcseProgress} ibTopics={ibProgress} />
 
+        {/* Progress Instructions */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <Card className="p-4 bg-blue-50 border-blue-200">
+            <CardContent className="pt-0">
+              <p className="text-sm text-blue-800 text-center">
+                💡 <strong>Track your progress:</strong> Submit a rating and write optional feedback for each lesson to log your progress in the progress bar above
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Legend */}
         <div className="flex justify-center mb-8">
           <Card className="p-4">

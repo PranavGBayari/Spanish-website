@@ -68,14 +68,26 @@ const FillInTheBlanks = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-100">
       <Navbar />
       <div className="container mx-auto px-4 py-8">
-        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             Fill in the Blanks
+            <Badge variant="outline" className="ml-4 bg-yellow-100 text-yellow-800 border-yellow-300">
+              🚧 Work in Progress
+            </Badge>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
             Test your Spanish grammar skills by choosing the correct verb form
           </p>
+          <div className="max-w-2xl mx-auto">
+            <Card className="p-4 bg-yellow-50 border-yellow-200">
+              <CardContent className="pt-0">
+                <p className="text-yellow-800 text-center">
+                  <strong>Coming Soon!</strong> This interactive exercise section is currently being developed. 
+                  More questions and topics will be added regularly. Check back soon for updates!
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* Progress */}

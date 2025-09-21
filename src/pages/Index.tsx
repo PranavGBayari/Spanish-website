@@ -114,7 +114,7 @@ const Index = () => {
       <footer className="bg-muted py-8 px-4">
         <div className="container mx-auto text-center">
           <p className="text-muted-foreground">
-            © 2024 ¿Español o inglés? Making Spanish learning accessible and enjoyable.
+            © 2025 ¿Español o inglés? Making Spanish learning accessible and enjoyable.
           </p>
         </div>
       </footer>
