@@ -51,7 +51,7 @@ const About = () => {
             <p>If you're here, you're probably either trying to figure out what subjunctive even means or panicking over how to write 150 words in Spanish without sounding like Google Translate's distant cousin. Trust me, I've been there.</p><br />
               <p>This website was created by <b>Pranav Bayari</b> (95th percentile in IGCSE Spanish), who started learning Spanish at the beginning of IGCSE and felt like diving headfirst into the deep end of la piscina. If I could go from Hola, ¿cómo estás? to acing my exams, so can you.</p><br />
               <p>We've taken feedback and experiences from both Spanish B and Ab Initio students to create the most comprehensive resource possible. This means we understand the challenges across both IGCSE and IB levels, and we are here to make your Spanish journey easier, more fun, and (hopefully) less stressful.</p><br />
-              <p>Want to connect? Find me on <a href="https://www.linkedin.com/in/pranav-bayari/" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">LinkedIn</a>!</p><br />
+              <p>Want to connect? Find me on <a href="https://www.linkedin.com/in/pranav-bayari-394734327/" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 underline">LinkedIn</a>!</p><br />
               <p>We’ve got the perspectives of both IGCSE and IB (B and Ab Initio), so we know what you’re going through. And we’re here to make it easier, more fun, and (hopefully) less stressful.</p><br />
               <p>Here, you’ll find:</p><br />
               <ul>
